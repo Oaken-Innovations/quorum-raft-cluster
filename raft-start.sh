@@ -2,7 +2,9 @@
 set -u
 set -e
 
-GLOBAL_ARGS="--raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum"
+NETWORK_ID=$(cat genesis.json | grep chainId | awk -F " " '{print $2}' | awk -F "," '{print $1}')
+
+GLOBAL_ARGS="--networkid $NETWORK_ID --raft --rpc --rpcaddr 0.0.0.0 --rpcapi admin,db,eth,debug,miner,net,shh,txpool,personal,web3,quorum"
 
 # echo "[*] Starting Constellation node"
 # nohup constellation-node tm.conf 2>> qdata/logs/constellation.log &
