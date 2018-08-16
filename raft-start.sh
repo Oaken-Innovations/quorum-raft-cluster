@@ -13,4 +13,4 @@ GLOBAL_ARGS="--networkid $NETWORK_ID --raft --rpc --rpcaddr 0.0.0.0 --rpcapi adm
 
 
 echo "[*] Starting geth node"
-PRIVATE_CONFIG=tm.conf nohup geth --datadir qdata $GLOBAL_ARGS --rpccorsdomain "*" --rpcport 22000 --port 21000 --raftport 23000 --unlock 0 --password passwords.txt 2>>qdata/logs/geth.log &
+PRIVATE_CONFIG=qdata/tm.ipc nohup geth --datadir qdata $GLOBAL_ARGS --rpccorsdomain "*" --rpcport 22000 --port 21000 --raftport 23000 --unlock 0 --password passwords.txt --raftjoinexisting ?? 2>>qdata/logs/geth.log &
